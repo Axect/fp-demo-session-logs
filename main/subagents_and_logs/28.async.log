@@ -1,0 +1,262 @@
+v1-saved
+[magi] astra (accept): mono baseline 1e16 v2 check
+{"handle": "term_f486a49a-896e-4a1c-a132-d0928d444d73", "session": "~/.omp/agent/sessions/-Documents-Project-Demo-Agent-Workflow-Demo/2026-10-30T19-29-56-882Z_01a18e4a-4e92-74e2-b5bd-22684ddf5309.jsonl", "marker": "mono baseline 1e16 v2 check"}
+수정 필요
+
+**The new calculation discriminates between the two angular conventions, conditional on the quoted primary-emission formula and on `Q_now` containing the primary photons. It does not independently verify those premises or explain the residual 3% excess.** I would withdraw the v1 factor-\(4\pi\) objection under those premises, but not accept C6’s unconditional wording.
+
+I ran both check scripts and independently integrated the cached spectrum. No files were modified; no network or prohibited sources were accessed.
+
+## 1. C6: distinguish a conditional normalization test from verified source provenance
+
+> “The absolute convention is fixed by an independent prediction: MacGibbon (1991) gives a primary photon power…”  
+> — `work/report_mono_1e16.md:20–21`
+
+> “MacGibbon coefficients quoted from the paper, not refetched”  
+> — report:25
+
+The new script **uses** the quoted coefficients; it does not verify their attribution or conventions. Its documentation repeats the assertion (`work/check_absolute_photon_power.py:3–5`), without a source excerpt or equation/table locator.
+
+**The algebra is correct given the stated per-degree-of-freedom convention:**
+\[
+\dot M_{\gamma,\mathrm{primary}}
+=\frac{(5.34\times10^{25}\ {\rm g^3\,s^{-1}})(2)(0.060)}
+{(10^{16}\ {\rm g})^2}
+=6.408\times10^{-8}\ {\rm g\,s^{-1}}.
+\]
+Two photon polarizations give the stated factor of two. I found no arithmetic or dimensional error in this formula. **I did not verify the coefficients against the original paper under the no-network constraint.**
+
+The physically decisive comparison is not “1.032 is close to one.” It is that the angle-integrated interpretation supplies only **8.21% of the predicted primary photon power**. If the cache contains the complete primary component, adding nonnegative secondary emission cannot repair that deficit.
+
+Thus **hypothesis 2 is excluded as a pure angular-normalization error under the stated emission assumptions**. Retaining it would require an additional problem, such as incomplete emission content or another normalization error. That is not the original hypothesis.
+
+**Required replacement for report:20–24:**
+
+> “Using the quoted MacGibbon primary-photon coefficient, assuming a Schwarzschild black hole and that Q_now includes the complete primary photon component, the predicted photon power is 6.408×10−8 g s−1 in mass-equivalent units. The per-steradian interpretation gives 1.032 times this prediction, whereas the angle-integrated interpretation gives only 0.0821 times it. Under these assumptions, the angle-integrated interpretation is incompatible with the primary contribution alone. Together with the relative K/Q check, this supports using the cached K and J·Q_now without an additional 1/(4π). The quoted source coefficients have not been independently checked against the original paper in this review.”
+
+An accessible source excerpt identifying the coefficient and its per-polarization convention would remove the source-verification qualification.
+
+## 2. C6 still contains a dimensionally incorrect displayed equality
+
+> “4 pi Int E Q_now dE = 6.61e-8 g/s”  
+> — report:22
+
+The left side is **energy per time**, not mass per time. The script correctly multiplies by `MEV_TO_G` (`check_absolute_photon_power.py:18,22`), but the report omits that conversion. This was already identified in v1 and remains unfixed.
+
+**Required replacement:**
+
+> “The mass-equivalent photon power is (4π/c²)∫E Q_now(E)dE = 6.612×10−8 g s−1 under the per-steradian interpretation, with the MeV energy unit converted consistently; without 4π it is 5.262×10−9 g s−1.”
+
+## 3. The secondary-photon explanation is not demonstrated
+
+> “the excess is consistent with secondary photons”  
+> — report:22
+
+> “final-state radiation, a few per cent at T_H ~ 1 MeV”  
+> — `work/check_absolute_photon_power.py:7–8`
+
+A positive excess has the **sign** expected from additional emission. That does not establish its magnitude or origin. Neither check separates primary and secondary spectra or calculates final-state radiation.
+
+I also tested the numerical contribution:
+
+| Integration of cached spectrum | Inferred power / quoted primary prediction, with \(4\pi\) |
+|---|---:|
+| Script’s trapezoidal integral | 1.031813 |
+| Analytic integration over positive log-log interpolation segments | 1.029979 |
+
+The trapezoidal integral is approximately **0.178% higher** than the latter. Numerical integration therefore explains part, but not all, of the excess. The initial-versus-present mass correction to the primary prediction is only approximately **0.00764%**.
+
+**Answer to the brief’s question:** a few-percent secondary contribution is not contradicted by this comparison, but its physical size has not been independently established here. The residual cannot be assigned to secondaries rather than emission-model/coefficient differences from these data alone.
+
+**Required replacement for the parenthetical:**
+
+> “The approximately 3% excess is not decomposed here; secondary emission, differences in the primary-emission calculation, and numerical integration may contribute. It is not used as an independent validation of the secondary-photon model.”
+
+For the script’s opening description, replace “independent of the cached arrays” with:
+
+> “Comparison of cached Q_now against an external primary-photon power formula whose coefficients are specified independently of the cache.”
+
+The **reference prediction**, not the entire check, is independent of the arrays.
+
+## Remaining C1–C9 issues
+
+- **C1–C5:** the executed ceiling script reproduces the revised numerical claims. No new required numerical correction.
+- **C7:** the explicit admission that instrument masks are unverified remains essential. “COMPTEL’s J … is consistent with a high-latitude average” is only a magnitude comparison, not validation of COMPTEL’s actual observing region. I would not reject this sentence while its preceding qualification remains.
+- **C8–C9:** the revised wording addresses the previous error-prescription and coverage objections. Those objections should not be reopened merely to prolong the review.
+
+**Decision:** C6 now supplies a substantive test against the factor-\(4\pi\) alternative; the v1 degeneracy is no longer unresolved on the stated physical assumptions. Required changes are to state those assumptions, correct the power units, and stop treating the unexplained 3% residual as a verified secondary-emission contribution. The result remains a cached-model non-overshoot ceiling, not a fully validated observational confidence limit.
+[magi] astra (accept): emf gbp v1 check
+{"handle": "term_f486a49a-896e-4a1c-a132-d0928d444d73", "session": "~/.omp/agent/sessions/-Documents-Project-Demo-Agent-Workflow-Demo/2026-10-30T19-29-56-882Z_01a18e4a-4e92-74e2-b5bd-22684ddf5309.jsonl", "marker": "emf gbp v1 check"}
+수정 필요
+
+**The reported ceilings reproduce the implemented interpolant, but F2 does not establish a conservative bound on the physical result.** Its gap-deletion calculation retains numerical signal inside the supposedly deleted interval; its guarantee assumes more than correct node values; and the energy-bound formula mixes incompatible mass-density conventions. F1 also misstates what is constrained.
+
+I rebuilt both S matrices **in memory using `_common.py`**, verified their equality with the existing caches, and independently integrated the GB2 distributions. No files were modified; no network, SSH, or prohibited sources were accessed.
+
+## 1. Major: “sliver dropped” does not actually integrate a fully deleted interval
+
+> “the ‘sliver dropped’ column zeroes it … Difference <= 7.3 %.”  
+> — `work/report_emf_gbp.md:37`
+
+`work/emf_gbp.py:77–81` zeroes **interior sample points**, retains the nonzero endpoints, and then applies trapezoidal integration. This leaves triangular contributions inside the excluded interval. Refining the sampling shrinks those contributions.
+
+For \((a,p,q)=(1,1,1)\), the purported gap-deleted ceiling changes from:
+
+- refine 8: \(3.4187570\times10^{-7}\);
+- refine 32: \(3.4534386\times10^{-7}\);
+- refine 128: \(3.4621477\times10^{-7}\).
+
+Integrating each original mass-grid interval separately and excluding the entire gap gives **\(3.4650541\times10^{-7}\)**. Relative to the consistently integrated undeleted interpolant, the increase is **8.6835%**, not at most 7.3%.
+
+For \((2,0.5,2)\), the corresponding increase is **8.7092%**. Increasing the per-interval Gauss quadrature from 12 to 24 nodes reproduces this result.
+
+This is an implementation defect in the sensitivity test, not evidence that the underlying physical signal has converged.
+
+**Required replacement:**
+
+> “The current ‘sliver dropped’ implementation zeroes interior quadrature samples but retains triangular endpoint contributions inside the excluded interval. Integrating the same interpolant separately on each original mass interval and deleting the full gap increases the ceiling by up to approximately 8.71% for the listed shapes. These differences measure sensitivity to deleting one interpolated interval, not the uncertainty in the physical prediction.”
+
+The column must be recomputed before it can be labelled “sliver dropped” without that qualification.
+
+## 2. Major: correct node values do not imply a conservative interpolated ceiling
+
+> “the ceiling … is not looser than the sliver-dropped value, provided node values are correct.”  
+> — report:39–40
+
+That condition is insufficient. Correct values at discrete masses do not establish that the interpolated signal elsewhere is a lower bound.
+
+If the true signal dips below the log-linear interpolant between retained nodes, the retained integral can be too large and the resulting ceiling too restrictive—even after deleting the evaporation gap. Positivity alone does not prevent this.
+
+E3 refines integration of the **same interpolant**. It does not resolve this mass-grid error.
+
+**Required replacement:**
+
+> “Deleting a nonnegative contribution weakens the ceiling within the adopted interpolated model. It bounds the physical ceiling from above only if the retained interpolated signal is itself a pointwise or integrated lower bound on the true signal in every relevant bin. Correct node values alone do not establish this condition, so the gap-deleted result is a sensitivity diagnostic rather than a certified conservative physical bound.”
+
+The extragalactic kernel also needs attention. In Fermi 140–200 MeV, its per-unit-\(f\) bin contribution changes from **4.0394 to 2.7047** across the bracketing nodes. It cannot be treated as automatically resolved merely because the problematic present-day evaporation is Galactic. For the \((1,1,1)\) shape, approximately **38.9%** of the binding signal comes from masses below the *lower* gap node, where past emission matters.
+
+## 3. Major: the energy bound needs a consistent density, Jacobian, and unit conversion
+
+The brief proposes
+\[
+\frac{J\psi(M_*)}{4\pi\,\Delta E\,E_{\rm lo}\,M_*^4}
+\int_0^{m_1}L(m)m^2\,dm,
+\qquad L(m)=|dM/dt|.
+\]
+
+There are three problems.
+
+### Density convention
+
+For \(\int\psi(M)\,dM=1\), the cubic-mapping expression contains **\(M_*^{-3}\)**, not \(M_*^{-4}\). The latter applies when the numerator is the dimensionless density **\(\psi_{\ln}(M_*)=M_*\psi(M_*)\)**.
+
+### Cubic mapping
+
+The relation \(m^3=M_i^3-M_*^3\) requires \(L(M)M^2\) to be constant. The supplied mass-loss table gives approximately:
+
+- \(9.68\times10^{25}\) at \(M_*\);
+- \(1.29\times10^{26}\) at \(10^{14}\) g;
+- \(6.71\times10^{26}\) at \(10^{12}\) g.
+
+The clock gives \(m_1=1.735\times10^{14}\) g; the cubic mapping gives \(1.567\times10^{14}\) g. They are not interchangeable.
+
+### General bound
+
+For a common elapsed age,
+\[
+\tau(M_i)-\tau(m)=t_0,
+\qquad
+\frac{dM_i}{dm}=\frac{L(M_i)}{L(m)}.
+\]
+
+Consequently, an all-power Galactic bound is
+\[
+P_{b,\mathrm{gap}}^{\mathrm{Gal}}
+\le
+\frac{Jc^2}{4\pi\,\Delta E\,E_{\rm lo}}
+\int_0^{m_1}
+\frac{\psi(M_i(m))\,L(M_i(m))}{M_i(m)}\,dm,
+\]
+with the energy units converted consistently. The current-mass loss rate cancels through the Jacobian.
+
+This bounds **Galactic instantaneous emission**, not the extragalactic emission accumulated over the population’s history. The report’s “\(\sim20\times P_b\)” therefore cannot serve as a certified total-gap bound without a derivation specifying both components and the denominator \(P_b\).
+
+**Required replacement for report:38–40:**
+
+> “The cache does not determine the true gap contribution. A Galactic energy-conservation bound must use the age-fixed Jacobian \(dM_i/dm=L(M_i)/L(m)\), a consistent distinction between ψ and ψ_ln, and conversion from mass-loss power to photon energy. It does not by itself bound the extragalactic contribution. We therefore do not assign a certified total-gap bound or a one-sided physical uncertainty from this calculation.”
+
+## 4. F1 confuses signal leverage with the quantity being bounded
+
+> “two decades below M_c; f_max then constrains the tail, not the bulk at M_c.”  
+> — report:33–34
+
+Two corrections are required.
+
+1. \(10^{16}/(5.21\times10^{14})\approx19.2\): **1.28 decades**, not two.
+2. For a fixed normalized GB2 shape, \(f_{\max}\) bounds the **total initial-mass-equivalent normalization \(f\)**. Tail-dominated signal does not turn it into a separately fitted tail abundance.
+
+The signal-support interpretation can be strengthened using actual mass fractions. For \((1,1,1)\), its 90%-signal interval contains only **3.14%** of the GB2 mass fraction. For \((2,2,0.5)\), it contains only **0.225%**, despite \(ap=4\). Thus \(ap\lesssim3\) should not be presented as a general boundary for tail sensitivity.
+
+Also, \(M_c\) is a scale, not generally the distribution’s centre. The mode of \(\psi_{\ln}\) is \(M_c(p/q)^{1/a}\).
+
+**Required replacement:**
+
+> “Several listed shapes obtain most of their binding-bin signal from a small low-mass fraction of the distribution. For example, the 90%-signal intervals contain 3.14% and 0.225% of the mass fraction for (1,1,1) and (2,2,0.5), respectively. The resulting ceiling still bounds the total normalization f for the assumed GB2 shape; its leverage is tail-dominated and therefore sensitive to that shape assumption. M_* lies approximately 1.28 decades below M_c, and the table does not establish a universal threshold in ap.”
+
+## 5. Clarify abundance normalization and omitted tails
+
+> “mass fraction at formation”  
+> — report:6
+
+The equation matches the baseline **if \(f\rho_{\rm DM}\) is a present-comoving, initial-mass-equivalent density**. It is not automatically the formation-epoch fraction \(\beta\), nor the surviving PBH fraction today.
+
+**Required replacement:**
+
+> “Here ψ is normalized in initial mass, and fρ_DM is the initial-mass-equivalent density in present-comoving units, including objects that have subsequently evaporated. Thus f is neither the formation-epoch total-density fraction β nor, in general, the surviving PBH dark-matter fraction today.”
+
+> “mass outside 1e13–1e22 g dropped (reported).”  
+> — report:13
+
+The report does not list these fractions. The largest omitted low-mass fraction is **\(1.5000\times10^{-3}\)** for \((2,0.5,2)\), not a strict maximum of \(10^{-3}\).
+
+Small omitted **mass** is not a bound on omitted **signal**: the response is strongly mass-dependent, as the report’s own tail-dominated examples demonstrate. Evaporated holes can contribute through \(K\); present-day disappearance is not sufficient to exclude them.
+
+**Required replacement:**
+
+> “Mass outside the cached interval is assigned zero signal without renormalizing ψ. The omitted low-mass fraction reaches 1.50×10−3 for (2,0.5,2), and the omitted high-mass fraction reaches 1.50×10−6 for (2,2,0.5). Positivity fixes the direction of this omission for an otherwise fixed response, but these mass fractions alone do not bound its effect on the ceiling.”
+
+Under the permitted inputs, I cannot establish that the omitted low-mass contribution is materially negligible.
+
+## Numerical reproduction: E1–E4 and the table
+
+The GB2 density integrates to unity over its full domain; independent numerical integration gives unity to numerical precision for all distinct \((p,q)\) pairs.
+
+- **E1:** \(3.0376736\times10^{-4}\).
+- **E2:** \(3.0403875\times10^{-4}\), approximately **0.0893%** above the monochromatic result.
+- **E3:** \(3.1868740\times10^{-7}\) versus \(3.1881227\times10^{-7}\).
+- **E4:** maximum attenuation-induced increase **0.3480%**.
+
+The following reproduces the **current implementation**, including its imperfect gap deletion:
+
+| \((a,p,q)\) | \(f_{\max}\) | Current “sliver dropped” | Binding bin, MeV | Central 90% signal interval, g |
+|---|---:|---:|---|---|
+| (1,1,1) | \(3.18687\times10^{-7}\) | \(3.41876\times10^{-7}\) | Fermi 140–200 | \(3.010\times10^{14}\)–\(6.451\times10^{14}\) |
+| (2,1,1) | \(2.78824\times10^{-6}\) | \(2.95458\times10^{-6}\) | EGRET 100–150 | \(3.534\times10^{14}\)–\(7.998\times10^{14}\) |
+| (3,1,1) | \(3.08746\times10^{-5}\) | \(3.11709\times10^{-5}\) | EGRET 30–50 | \(4.183\times10^{14}\)–\(2.580\times10^{15}\) |
+| (5,1,1) | \(1.87408\times10^{-4}\) | \(1.87410\times10^{-4}\) | COMPTEL 9–12 | \(3.494\times10^{15}\)–\(9.182\times10^{15}\) |
+| (10,1,1) | \(2.80395\times10^{-4}\) | \(2.80395\times10^{-4}\) | COMPTEL 6–9 | \(6.727\times10^{15}\)–\(1.141\times10^{16}\) |
+| (2,0.5,2) | \(1.93745\times10^{-7}\) | \(2.07882\times10^{-7}\) | Fermi 140–200 | \(3.044\times10^{14}\)–\(6.467\times10^{14}\) |
+| (2,2,0.5) | \(4.66654\times10^{-4}\) | \(4.68396\times10^{-4}\) | EGRET 30–50 | \(5.710\times10^{14}\)–\(2.880\times10^{15}\) |
+
+### Naming
+
+Do not relabel any finite-\(q\) table row “critical collapse” without specifying the target mass-fraction density. Mathematically, \(q\to\infty\) with \(M_c=M_fq^{1/a}\) yields a generalized-gamma density
+\[
+\psi(M)\propto M^{ap-1}e^{-(M/M_f)^a}.
+\]
+A mapping can then be derived from an explicitly supplied critical-collapse formula; it is not a unique label attached to these GB2 parameters.
+
+**Decision:** retain the table as results of the stated cached interpolant. Reject the claimed conservative physical interpretation of F2 until the deletion integral and bound assumptions are corrected; revise F1 and the abundance convention as above.
+
+
+Wall time: 439.29 seconds

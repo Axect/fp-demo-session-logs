@@ -1,0 +1,29 @@
+   51 ceiling_1e16.py
+  127 emf_gbp.py
+   57 check_units.py
+   30 check_absolute_photon_power.py
+  111 export_report_data.py
+   94 ../code/_common.py
+  470 total
+emf_gbp.py:46:    np.savez_compressed(cache, S=S, C=C, inst=inst)
+export_report_data.py:82:pd.DataFrame(data_rows() + spectrum_rows(cases[0])).to_csv(OUT / "spectrum_mono_1e16.csv", index=False)
+export_report_data.py:88:bw.to_csv(OUT / "binwise_fb.csv", index=False)
+export_report_data.py:100:pd.DataFrame(g3).to_csv(OUT / "gb2_shapes_fmax.csv", index=False)
+export_report_data.py:106:pd.DataFrame(rows4).to_csv(OUT / "emf_spectra.csv", index=False)
+plot_emf_gbp.py:88:    fig.savefig(OUT / 'emf_gbp.png', dpi=300, bbox_inches='tight')
+plot_emf_gbp.py:89:    fig.savefig(OUT / 'emf_gbp.pdf', dpi=300, bbox_inches='tight')
+plot_emf_spectra.py:107:    fig.savefig(OUT / 'emf_spectra.png', dpi=300, bbox_inches='tight')
+plot_emf_spectra.py:108:    fig.savefig(OUT / 'emf_spectra.pdf', dpi=300, bbox_inches='tight')
+plot_mono_1e16.py:77:    fig.savefig(OUT / 'mono_1e16_spectrum.png', dpi=300, bbox_inches='tight')
+plot_mono_1e16.py:78:    fig.savefig(OUT / 'mono_1e16_spectrum.pdf', dpi=300, bbox_inches='tight')
+./briefs/error_provenance_brief.md
+./error_provenance.md
+./_guide/answers/emf_gbp_v1_astra.md
+./_guide/answers/mono_baseline_v1_astra.md
+./_guide/answers/mono_baseline_v2_astra.md
+./_guide/emf_gbp_check_20261031.md
+./_guide/mono_baseline_check_20261031.md
+./_guide/mono_baseline_v2_20261031.md
+./outputs/20261031_pbh_photon_ceiling_gbp/report.md
+./report_emf_gbp.md
+./report_mono_1e16.md

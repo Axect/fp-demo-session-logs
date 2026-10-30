@@ -1,0 +1,15 @@
+spectrum_mono_1e16.py:29:    fig, ax = plt.subplots(figsize=FIGSIZE_ONE_HALF)
+spectrum_mono_1e16.py:47:            transform=ax.transAxes, fontsize=6)
+spectrum_mono_1e16.py:48:    ax.set(xscale="log", yscale="log", xlim=(2e-3, 1e3), ylim=(1e-4, 1e-1), xlabel=labels[0], ylabel=labels[1])
+spectrum_mono_1e16.py:49:    ax.legend(fontsize=5, loc="upper right", ncol=2)
+binwise_fb.py:11:from _plot_style import FIGSIZE_DOUBLE, apply_style, assert_english, save_figure
+binwise_fb.py:26:    fig, axes = plt.subplots(1, 3, figsize=(7.2, 2.5), sharey=True)
+binwise_fb.py:37:                fontsize=5.5)
+binwise_fb.py:38:        ax.text(0.03, 0.95, title, transform=ax.transAxes, fontsize=5.5, va="top")
+binwise_fb.py:39:        ax.set(xscale="log", yscale="log", xlim=(2e-3, 1e3), ylim=(1e-9, 1e9), xlabel=xl)
+binwise_fb.py:41:    axes[2].legend(fontsize=5, loc="center right")
+emf_spectra.py:36:    fig, axes = plt.subplots(2, 3, figsize=(7.2, 4.6), sharex=True, sharey=True)
+emf_spectra.py:52:        ax.text(0.97, 0.95, r"(%s) %s" % ("abcdef"[n], title(case)), transform=ax.transAxes, fontsize=5,
+emf_spectra.py:55:                transform=ax.transAxes, fontsize=5, va="top", ha="right")
+emf_spectra.py:56:        ax.set(xscale="log", yscale="log", xlim=(2e-3, 1e3), ylim=(3e-5, 1e-1))
+emf_spectra.py:61:    axes[0, 0].legend(fontsize=4.2, loc="lower left", ncol=1)
